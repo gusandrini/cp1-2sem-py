@@ -90,11 +90,26 @@ def sobre_nos():
 def solucoes_veiculos():
     #elaborar
     
-def login():
-    #elaborar
     
-def cadastro():
-    #elaborar
+usuarios = {}
+
+def cadastro(usuarios):
+    nome = input("Digite seu nome: ")
+    email = input("Digite seu e-mail: ")
+    telefone = input("Digite seu telefone: ")
+    senha = input("Digite sua senha: ")
+    usuarios[email] = {"nome": nome, "telefone": telefone, "senha": senha}
+    print("Cadastro realizado com sucesso!")
+    
+def login(usuarios):
+    email_login = input("Digite seu e-mail: ")
+    senha_login = input("Digite sua senha: ")
+    if email_login in usuarios and usuarios[email_login]["senha"] == senha_login:
+        print("Login bem-sucedido!")
+    else:
+        print("Usuário ou senha incorretos. ")
+    
+
 
 
 #Controla as opções do usuário     
