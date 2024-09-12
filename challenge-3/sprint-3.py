@@ -46,7 +46,19 @@ def assistente_virtual():
     print("Acesse nossa assitente virtual por esse link: https://web-chat.global.assistant.watson.appdomain.cloud/preview.html?region=us-south&integrationID=250f2872-90d1-4b69-a463-e7c03c0581c9&serviceInstanceID=cd14777c-39ac-401b-938f-9849d2bb018f")        
 
 def despesas():
-    #elaborar
+    lista = []
+    print("\nVocê escolheu a opção despesas")
+    print('Insira o valor por peça usada ou se preferir insira o total do valor das peças, e escolha "não" para encerrar.')
+    repetir = input('Você deseja calcular os gastos das peças? (sim ou não) ')
+    while repetir == "sim":
+        peca = float(input('Valor da peça: '))
+        lista.append(peca)
+        repetir = input('Deseja continuar adicionando o valor das peças? (sim ou não) ')
+    sum1 = sum(lista)
+    #pecas = float(input('Digite o valor das peças: '))
+    mao_de_obra = float(input('Digite o valor da mão de obra: '))
+    despesa = mao_de_obra + sum1
+    print(f'Total das despesas: {despesa}')
     
 def sobre_nos():
     #elaborar
