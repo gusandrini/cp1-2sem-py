@@ -19,7 +19,14 @@ def menu():
             return opcao
         
 def diagnostico_veiculo():
-    #elaborar
+    print("\nVocê escolheu a opção diagnóstico")
+    modelCar = int(input('\n Qual o modelo do seu veículo?'))
+    anoCar = int(input('\n Qual o ano do seu veículo?'))
+    motivo = int(input('\n Quais adversidades você identificou em seu veículo? Descreva detalhadamente.'))
+    if(modelCar, anoCar, motivo != ""):
+        print('Opção inválida!')
+    else:
+        return modelCar, anoCar, motivo
     
 def medidas_preventivas():
     #elaborar
