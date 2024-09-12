@@ -61,7 +61,31 @@ def despesas():
     print(f'Total das despesas: {despesa}')
     
 def sobre_nos():
-    #elaborar
+    escolha = -1
+    integrantes = ["Eduarda", "Gustavo", "Vitor"]
+    parceiros = ["FIAP", "Porto Seguro"]
+    resumo = ("O aplicativo PortoCarCare oferece uma solução inovadora para motoristas, com ou sem conhecimento\n"
+        "prévio sobre a mecânica de um carro, preocupados com o diagnóstico do problema e a manutenção de seus veículos.\n"
+        "O objetivo do aplicativo é usar da tecnologia para proporcionar aos motoristas uma experiência simplificada e\n"
+        "confiável ao lidar com problemas mecânicos e de manutenção, sem ter que ir fisicamente a uma oficina mecânica \n" 
+        "para saber qual é o problema do seu automóvel, poupando tempo e mão de obra.\n"
+        "Nosso serviço oferece uma assistente virtual, programada para auxiliar o cliente, para fazer a análise do caso do cliente\n"
+        "e fazer perguntas para chegar a um diagnóstico mais exato possível. Além disso, o aplicativo com uma certa frequência envia\n"
+        "notificações aos usuários, buscando fornecer a eles dicas e lembretes úteis sobre a manutenção preventiva, e com isso, ajudar\n"
+        "a prolongar a vida útil dos veículos e evitar acidentes ou problemas futuros.")
+    
+    while opcao >= 1 or opcao <= 6: #VER QUE NEGÓCIOS É ESSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        print("Bem vindo ao conteúdo de nossa empresa!\n"
+        "[1] Integrantes\n"
+        "[2] Sobre nós\n"
+        "[3] Parceirias\n")
+        opcao = int(input('\nDigite a opção desejada: '))
+        if(opcao < 1 or opcao > 3):
+            print('Opção inválida')
+        else: 
+            return opcao
+    
+    
     
 def solucoes_veiculos():
     #elaborar
