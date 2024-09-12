@@ -41,7 +41,8 @@ def medidas_preventivas():
         "9-Faça revisões regulares: Leve o carro a um mecânico regularmente para verificar se está tudo bem.")
     
 def assistente_virtual():
-    #elaborar        
+    print("\nVocê escolheu a opção assistente virtual")
+    print("Acesse nossa assitente virtual por esse link: https://web-chat.global.assistant.watson.appdomain.cloud/preview.html?region=us-south&integrationID=250f2872-90d1-4b69-a463-e7c03c0581c9&serviceInstanceID=cd14777c-39ac-401b-938f-9849d2bb018f")        
 
 def despesas():
     #elaborar
