@@ -20,13 +20,14 @@ def menu():
         
 def diagnostico_veiculo():
     print("\nVocê escolheu a opção diagnóstico")
+    contato = int(input('\n Informe a forma de contato para retorno?'))
     modelCar = int(input('\n Qual o modelo do seu veículo?'))
     anoCar = int(input('\n Qual o ano do seu veículo?'))
     motivo = int(input('\n Quais adversidades você identificou em seu veículo? Descreva detalhadamente.'))
-    if(modelCar, anoCar, motivo != ""):
+    if(modelCar, anoCar, motivo, contato != ""):
         print('Opção inválida!')
     else:
-        return modelCar, anoCar, motivo
+        return ('Os dados foram adicionados e foram encaminhados ao nosso centro de controle e em breve entraremos em contato')
     
 def medidas_preventivas():
     print("\nVocê escolheu a opção medidas preventivas")
