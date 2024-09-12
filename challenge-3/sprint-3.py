@@ -29,7 +29,16 @@ def diagnostico_veiculo():
         return modelCar, anoCar, motivo
     
 def medidas_preventivas():
-    #elaborar
+    print("\nVocê escolheu a opção medidas preventivas")
+    print("\n1-Verifique os pneus regularmente: Veja se os pneus têm pressão suficiente e se não estão gastos ou danificados.\n"
+        "2-Freios em bom estado: Verifique regularmente o sistema de freios, incluindo pastilhas, discos e fluido de freio. Substitua os componentes desgastados.\n"
+        "3-Mantenha as luzes do carro em bom estado: Verifique regularmente se todas as luzes do carro estão funcionando corretamente.\n"
+        "4-Mantenha os pneus alinhados: Um alinhamento adequado dos pneus ajuda a garantir um desgaste uniforme e uma condução suave.\n"
+        "5-Mude o óleo regularmente: Siga as recomendações do fabricante para troca de óleo e filtro.\n"
+        "6-Bateria: Verifique regularmente a bateria, garantindo que os terminais estejam limpos e bem conectados. Substitua a bateria conforme necessário, especialmente se estiver mostrando sinais de falha.\n"
+        "7-Use o freio de estacionamento: Isso ajuda a evitar danos à transmissão.\n"
+        "8-Evite sobrecarregar o carro: Não carregue mais peso do que o recomendado.\n"
+        "9-Faça revisões regulares: Leve o carro a um mecânico regularmente para verificar se está tudo bem.")
     
 def assistente_virtual():
     #elaborar        
