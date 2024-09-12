@@ -2,33 +2,44 @@
 #Menu inicial
 def menu():
     opcao = -1
-    while opcao >= 1 or opcao <= 6:
-        print("Bem vindo  ao nosso sistema de ajuda!\n"
-    "[1] Diagnóstico do veículo\n"
-    "[2] Medidas preventivas\n"
-    "[3] Assistente  virtual\n"
-    "[4] Despesas\n"
-    "[5] Sobre nós\n"
-    "[6] Soluções para seu veículo\n"
-    "[7] Cadastro\n"
-    "[8] Login")
-        opcao = int(input('\nDigite a opção desejada: '))
-        if(opcao < 1 or opcao > 8):
-            print('Opção inválida')
-        else: 
-            return opcao
+    try:
+        while opcao >= 1 or opcao <= 8:
+            print("Bem vindo  ao nosso sistema de ajuda!\n"
+        "[1] Diagnóstico do veículo\n"
+        "[2] Medidas preventivas\n"
+        "[3] Assistente  virtual\n"
+        "[4] Despesas\n"
+        "[5] Sobre nós\n"
+        "[6] Soluções para seu veículo\n"
+        "[7] Cadastro\n"
+        "[8] Login")
+            opcao = int(input('\nDigite a opção desejada: '))
+            if(opcao < 1 or opcao > 8):
+                print('Opção inválida')
+            else: 
+                return opcao
+    except ValueError:
+        print('Valor inválido. Digite uma opção válida') 
+    finally:
+        print('Fechando menu')   
+    return opcao
         
 def diagnostico_veiculo():
-    print("\nVocê escolheu a opção diagnóstico")
-    contato = int(input('\n Informe a forma de contato para retorno?'))
-    modelCar = int(input('\n Qual o modelo do seu veículo?'))
-    anoCar = int(input('\n Qual o ano do seu veículo?'))
-    motivo = int(input('\n Quais adversidades você identificou em seu veículo? Descreva detalhadamente.'))
-    if(modelCar, anoCar, motivo, contato != ""):
-        print('Opção inválida!')
+    try:
+        print("\nVocê escolheu a opção diagnóstico")
+        contato = input('\n Informe a forma de contato para retorno?')
+        modelCar = input('\n Qual o modelo do seu veículo?')
+        anoCar = int(input('\n Qual o ano do seu veículo?'))
+        motivo = input('\n Quais adversidades você identificou em seu veículo? Descreva detalhadamente.')
+        if(modelCar, anoCar, motivo, contato != ""):
+            print('Opção inválida!')
+    except ValueError as e:
+        print(f'Erro: {e}')
     else:
-        return ('Os dados foram adicionados e foram encaminhados ao nosso centro de controle e em breve entraremos em contato')
-    
+        print('Os dados foram adicionados e encaminhados ao nosso centro de controle. Em breve entraremos em contato.')
+    finally:
+        print('Finalizando diagnóstico.')
+
 def medidas_preventivas():
     print("\nVocê escolheu a opção medidas preventivas")
     print("\n1-Verifique os pneus regularmente: Veja se os pneus têm pressão suficiente e se não estão gastos ou danificados.\n"
@@ -50,18 +61,22 @@ def despesas():
     print("\nVocê escolheu a opção despesas")
     print('Insira o valor por peça usada ou se preferir insira o total do valor das peças, e escolha "não" para encerrar.')
     repetir = input('Você deseja calcular os gastos das peças? (sim ou não) ')
-    while repetir == "sim":
-        peca = float(input('Valor da peça: '))
-        lista.append(peca)
-        repetir = input('Deseja continuar adicionando o valor das peças? (sim ou não) ')
-    sum1 = sum(lista)
-    #pecas = float(input('Digite o valor das peças: '))
-    mao_de_obra = float(input('Digite o valor da mão de obra: '))
-    despesa = mao_de_obra + sum1
-    print(f'Total das despesas: {despesa}')
+    try:
+        while repetir == "sim":
+            peca = float(input('Valor da peça: '))
+            lista.append(peca)
+            repetir = input('Deseja continuar adicionando o valor das peças? (sim ou não) ')
+        #pecas = float(input('Digite o valor das peças: '))
+        mao_de_obra = float(input('Digite o valor da mão de obra: '))
+        despesa = mao_de_obra + sum(lista)
+        print(f'Total das despesas: {despesa}')
+    except ValueError:
+        print('Erro: Por favor, insira valores numéricos válidos.')
+    finally:
+        print('Finalizando cálculo de despesas.')
     
 def sobre_nos():
-    escolha = -1
+    opcao = -1
     integrantes = ["Eduarda", "Gustavo", "Vitor"]
     parceiros = ["FIAP", "Porto Seguro"]
     resumo = ("O aplicativo PortoCarCare oferece uma solução inovadora para motoristas, com ou sem conhecimento\n"
@@ -74,16 +89,25 @@ def sobre_nos():
         "notificações aos usuários, buscando fornecer a eles dicas e lembretes úteis sobre a manutenção preventiva, e com isso, ajudar\n"
         "a prolongar a vida útil dos veículos e evitar acidentes ou problemas futuros.")
     
-    while opcao >= 1 or opcao <= 6: #VER QUE NEGÓCIOS É ESSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        print("Bem vindo ao conteúdo de nossa empresa!\n"
-        "[1] Integrantes\n"
-        "[2] Sobre nós\n"
-        "[3] Parceirias\n")
-        opcao = int(input('\nDigite a opção desejada: '))
-        if(opcao < 1 or opcao > 3):
-            print('Opção inválida')
-        else: 
-            return opcao
+    try:
+        while opcao >= 1 or opcao <= 6: #VER QUE NEGÓCIOS É ESSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            print("Bem vindo ao conteúdo de nossa empresa!\n"
+            "[1] Integrantes\n"
+            "[2] Sobre nós\n"
+            "[3] Parceirias\n")
+            opcao = int(input('\nDigite a opção desejada: '))
+            if opcao == 1:
+                print(f'Integrantes: {integrantes}')
+            elif opcao == 2:
+                print(f'Sobre nós: {resumo}')
+            elif opcao == 3:
+                print(f"Parceiros: {parceiros}")
+            else:
+                print('Opção inválida')
+    except ValueError:
+        print('Erro: Por favor, insira um valor numérico válido')
+    finally:
+        print('Finalizando a consulta sobre a empresa')
     
     
     
@@ -94,42 +118,47 @@ def solucoes_veiculos():
 usuarios = {}
 
 def cadastro(usuarios):
-    nome = input("Digite seu nome: ")
-    email = input("Digite seu e-mail: ")
-    telefone = input("Digite seu telefone: ")
-    senha = input("Digite sua senha: ")
-    usuarios[email] = {"nome": nome, "telefone": telefone, "senha": senha}
-    print("Cadastro realizado com sucesso!")
+    try:
+        nome = input("Digite seu nome: ")
+        email = input("Digite seu e-mail: ")
+        telefone = input("Digite seu telefone: ")
+        senha = input("Digite sua senha: ")
+        usuarios[email] = {"nome": nome, "telefone": telefone, "senha": senha}
+        print("Cadastro realizado com sucesso!")
+    except Exception as e:
+        print(f"Erro: {e}")
+    finally:
+        print("Finalizando o cadastro do usuário")
     
 def login(usuarios):
-    email_login = input("Digite seu e-mail: ")
-    senha_login = input("Digite sua senha: ")
-    if email_login in usuarios and usuarios[email_login]["senha"] == senha_login:
-        print("Login bem-sucedido!")
-    else:
-        print("Usuário ou senha incorretos. ")
-    
-
-
-
-#Controla as opções do usuário     
+    try:
+        email_login = input("Digite seu e-mail: ")
+        senha_login = input("Digite sua senha: ")
+        if email_login in usuarios and usuarios[email_login]["senha"] == senha_login:
+            print("Login bem-sucedido!")
+        else:
+            print("Usuário ou senha incorretos. ")
+    except Exception as e:
+        print(f"Erro: {e}")
+    finally:
+        print("Finalizando o login do usuário")
+      
 def controlador(opcao):
     if opcao == 1:
-        result = diagnostico_veiculo()
+        diagnostico_veiculo()
     elif opcao == 2:
-        result = medidas_preventivas()
+        medidas_preventivas()
     elif opcao == 3:
-        result = assistente_virtual()
+        assistente_virtual()
     elif opcao == 4:
-        result = despesas()
+        despesas()
     elif opcao == 5:
-        result = sobre_nos()
+        sobre_nos()
     elif opcao == 6:
-        result = solucoes_veiculo()
+        solucoes_veiculo()
     elif opcao == 8:
-        result = login(usuarios)
+        login(usuarios)
     elif opcao == 7:
-        result = cadastro(usuarios)
+        cadastro(usuarios)
     else:
         print("Opção inválida")
-    return result
