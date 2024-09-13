@@ -90,7 +90,7 @@ def sobre_nos():
         "a prolongar a vida útil dos veículos e evitar acidentes ou problemas futuros.")
     
     try:
-        while opcao >= 1 or opcao <= 6: #VER QUE NEGÓCIOS É ESSE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        while opcao >= 1 and opcao <= 3: 
             print("Bem vindo ao conteúdo de nossa empresa!\n"
             "[1] Integrantes\n"
             "[2] Sobre nós\n"
@@ -108,13 +108,7 @@ def sobre_nos():
         print('Erro: Por favor, insira um valor numérico válido')
     finally:
         print('Finalizando a consulta sobre a empresa')
-    
-    
-    
-def solucoes_veiculos():
-    #elaborar
-    
-    
+   
 usuarios = {}
 
 def cadastro(usuarios):
@@ -123,6 +117,11 @@ def cadastro(usuarios):
         email = input("Digite seu e-mail: ")
         telefone = input("Digite seu telefone: ")
         senha = input("Digite sua senha: ")
+
+        if email in usuarios:
+            print("O email ja foi cadastrado. Tente outro.")
+            return
+
         usuarios[email] = {"nome": nome, "telefone": telefone, "senha": senha}
         print("Cadastro realizado com sucesso!")
     except Exception as e:
@@ -155,8 +154,6 @@ def controlador(opcao):
     elif opcao == 5:
         sobre_nos()
     elif opcao == 6:
-        solucoes_veiculo()
-    elif opcao == 8:
         login(usuarios)
     elif opcao == 7:
         cadastro(usuarios)
