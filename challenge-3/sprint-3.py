@@ -10,29 +10,32 @@ def menu():
         "[3] Assistente  virtual\n"
         "[4] Despesas\n"
         "[5] Sobre nós\n"
-        "[6] Soluções para seu veículo\n"
-        "[7] Cadastro\n"
-        "[8] Login")
+        "[6] Cadastro\n"
+        "[7] Login\n"
+        "[8] Listar usuário\n"
+        "[9] Buscar usuário\n"
+        "[10] Atualizar usuário\n"
+        "[11] Deletar usuário")
             opcao = int(input('\nDigite a opção desejada: '))
-            if(opcao < 1 or opcao > 8):
+            if(opcao < 1 or opcao > 12):
                 print('Opção inválida')
             else: 
                 return opcao
     except ValueError:
         print('Valor inválido. Digite uma opção válida') 
     finally:
-        print('Fechando menu')   
+        print('Fechando menu\n ')   
     return opcao
         
 def diagnostico_veiculo():
     try:
         print("\nVocê escolheu a opção diagnóstico")
-        contato = input('\n Informe a forma de contato para retorno?')
-        modelCar = input('\n Qual o modelo do seu veículo?')
-        anoCar = int(input('\n Qual o ano do seu veículo?'))
-        motivo = input('\n Quais adversidades você identificou em seu veículo? Descreva detalhadamente.')
-        if(modelCar, anoCar, motivo, contato != ""):
-            print('Opção inválida!')
+        contato = input('Informe a forma de contato e contato para retorno?\n ')
+        modelCar = input('Qual o modelo do seu veículo?\n ')
+        anoCar = int(input('Qual o ano do seu veículo?\n '))
+        motivo = input('Quais adversidades você identificou em seu veículo? Descreva detalhadamente.\n ')
+        # if(modelCar, anoCar, motivo, contato == ""):
+        #     print('Opção inválida!')
     except ValueError as e:
         print(f'Erro: {e}')
     else:
@@ -54,7 +57,7 @@ def medidas_preventivas():
     
 def assistente_virtual():
     print("\nVocê escolheu a opção assistente virtual")
-    print("Acesse nossa assitente virtual por esse link: https://web-chat.global.assistant.watson.appdomain.cloud/preview.html?region=us-south&integrationID=250f2872-90d1-4b69-a463-e7c03c0581c9&serviceInstanceID=cd14777c-39ac-401b-938f-9849d2bb018f")        
+    print("Acesse nossa assitente virtual por esse link: \n  https://web-chat.global.assistant.watson.appdomain.cloud/preview.html?region=us-south&integrationID=250f2872-90d1-4b69-a463-e7c03c0581c9&serviceInstanceID=cd14777c-39ac-401b-938f-9849d2bb018f")        
 
 def despesas():
     lista = []
@@ -76,10 +79,14 @@ def despesas():
         print('Finalizando cálculo de despesas.')
     
 def sobre_nos():
-    opcao = -1
-    integrantes = ["Eduarda", "Gustavo", "Vitor"]
-    parceiros = ["FIAP", "Porto Seguro"]
-    resumo = ("O aplicativo PortoCarCare oferece uma solução inovadora para motoristas, com ou sem conhecimento\n"
+    
+    
+    try:
+        
+        opcao = -1
+        integrantes = ["Eduarda", "Gustavo", "Vitor"]
+        parceiros = ["FIAP", "Porto Seguro"]
+        resumo = ("O aplicativo PortoCarCare oferece uma solução inovadora para motoristas, com ou sem conhecimento\n"
         "prévio sobre a mecânica de um carro, preocupados com o diagnóstico do problema e a manutenção de seus veículos.\n"
         "O objetivo do aplicativo é usar da tecnologia para proporcionar aos motoristas uma experiência simplificada e\n"
         "confiável ao lidar com problemas mecânicos e de manutenção, sem ter que ir fisicamente a uma oficina mecânica \n" 
@@ -89,7 +96,6 @@ def sobre_nos():
         "notificações aos usuários, buscando fornecer a eles dicas e lembretes úteis sobre a manutenção preventiva, e com isso, ajudar\n"
         "a prolongar a vida útil dos veículos e evitar acidentes ou problemas futuros.")
     
-    try:
         while opcao >= 1 and opcao <= 3: 
             print("Bem vindo ao conteúdo de nossa empresa!\n"
             "[1] Integrantes\n"
@@ -120,27 +126,60 @@ def cadastro(usuarios):
 
         if email in usuarios:
             print("O email ja foi cadastrado. Tente outro.")
-            return
+            return cadastro(usuarios)
 
         usuarios[email] = {"nome": nome, "telefone": telefone, "senha": senha}
-        print("Cadastro realizado com sucesso!")
     except Exception as e:
         print(f"Erro: {e}")
     finally:
-        print("Finalizando o cadastro do usuário")
+        print("Cadastro realizado com sucesso!")
     
 def login(usuarios):
     try:
         email_login = input("Digite seu e-mail: ")
         senha_login = input("Digite sua senha: ")
         if email_login in usuarios and usuarios[email_login]["senha"] == senha_login:
-            print("Login bem-sucedido!")
+            print("\nBem-vindo")
         else:
             print("Usuário ou senha incorretos. ")
     except Exception as e:
         print(f"Erro: {e}")
     finally:
-        print("Finalizando o login do usuário")
+        print("Login bem-sucedido!")
+        
+        
+#CRUD
+def listar_usuarios(usuarios):
+    for email, dados in usuarios.items():
+        print(f"Email: {email}")
+        for chave, valor in dados.items():
+            print(f"{chave}: {valor}")
+            
+def buscar_usuario(usuarios, email):
+    if email in usuarios:
+        return usuarios[email]
+    else:
+        print("Usuário não encontrado.")
+        return None
+    
+novos_dados={}
+    
+def atualizar_usuario(usuarios, email, novos_dados):
+    novos_dados = input("Digite seu e-mail: "), input("Digite seu telefone")
+    if email in usuarios:
+        usuarios[email].update(novos_dados)
+        print("Usuário atualizado com sucesso.")
+    else:
+        print("Usuário não encontrado.")
+
+def deletar_usuario(usuarios, email):
+      if email in usuarios:
+          del usuarios[email]
+          print("Usuário deletado com sucesso.")
+      else:
+          print("Usuário não encontrado.")
+
+
       
 def controlador(opcao):
     if opcao == 1:
@@ -154,8 +193,28 @@ def controlador(opcao):
     elif opcao == 5:
         sobre_nos()
     elif opcao == 6:
-        login(usuarios)
-    elif opcao == 7:
         cadastro(usuarios)
+    elif opcao == 7:
+        login(usuarios)
+    elif opcao == 8:
+        listar_usuarios(usuarios)
+    elif opcao == 9:
+        buscar_usuario(usuarios)
+    elif opcao == 10:
+        atualizar_usuario(usuarios)
+    elif opcao == 11:
+        deletar_usuario(usuarios)
     else:
         print("Opção inválida")
+        
+def principal():
+    continuar = True
+    while continuar:
+        opcao = menu()
+        controlador(opcao)
+        resposta = input("\nDeseja voltar ao menu principal? (s/n): ")
+        if resposta.lower() != 's':
+            continuar = False
+    
+#programa principal
+principal()
