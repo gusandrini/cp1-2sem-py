@@ -1,3 +1,7 @@
+# Eduarda Tiemi Akamini Machado RM: 554756
+# Gustavo de Oliveira Turci Sandrini RM:557505
+# Vitor Vinicios Araújo RM: 556241
+
 
 #Menu inicial
 clientes = {}
@@ -219,7 +223,7 @@ def altera_dados(email):
         
 
 def excluir_dados(email):
-    if email in clientes:
+    if email in clientes: 
         del clientes[email]
         print('Dados excluídos')
     else:
