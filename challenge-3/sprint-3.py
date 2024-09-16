@@ -1,31 +1,27 @@
 
 #Menu inicial
+clientes = {}
+
 def menu():
-    opcao = -1
-    try:
-        while opcao >= 1 or opcao <= 8:
+    while True:
+        try:
             print("Bem vindo  ao nosso sistema de ajuda!\n"
-        "[1] Diagnóstico do veículo\n"
-        "[2] Medidas preventivas\n"
-        "[3] Assistente  virtual\n"
-        "[4] Despesas\n"
-        "[5] Sobre nós\n"
-        "[6] Cadastro\n"
-        "[7] Login\n"
-        "[8] Listar usuário\n"
-        "[9] Buscar usuário\n"
-        "[10] Atualizar usuário\n"
-        "[11] Deletar usuário")
+                "[1] Diagnóstico do veículo\n"
+                "[2] Medidas preventivas\n"
+                "[3] Assistente  virtual\n"
+                "[4] Despesas\n"
+                "[5] Sobre nós\n"
+                "[6] Dados usuário\n"
+                "[7]Sair")
             opcao = int(input('\nDigite a opção desejada: '))
-            if(opcao < 1 or opcao > 12):
+            if(opcao < 1 and opcao > 7):
                 print('Opção inválida')
             else: 
                 return opcao
-    except ValueError:
-        print('Valor inválido. Digite uma opção válida') 
-    finally:
-        print('Fechando menu\n ')   
-    return opcao
+        except ValueError:
+            print('Valor inválido. Digite uma opção válida') 
+        finally:
+            print('Fechando menu\n ')   
         
 def diagnostico_veiculo():
     try:
@@ -78,15 +74,14 @@ def despesas():
     finally:
         print('Finalizando cálculo de despesas.')
     
-def sobre_nos():
     
+def integrante():
+    print("Eduarda, Gustavo, Vitor")
     
-    try:
-        
-        opcao = -1
-        integrantes = ["Eduarda", "Gustavo", "Vitor"]
-        parceiros = ["FIAP", "Porto Seguro"]
-        resumo = ("O aplicativo PortoCarCare oferece uma solução inovadora para motoristas, com ou sem conhecimento\n"
+def parceiros():
+    print("FIAP e Porto Seguro")
+def resumo():
+    print("O aplicativo PortoCarCare oferece uma solução inovadora para motoristas, com ou sem conhecimento\n"
         "prévio sobre a mecânica de um carro, preocupados com o diagnóstico do problema e a manutenção de seus veículos.\n"
         "O objetivo do aplicativo é usar da tecnologia para proporcionar aos motoristas uma experiência simplificada e\n"
         "confiável ao lidar com problemas mecânicos e de manutenção, sem ter que ir fisicamente a uma oficina mecânica \n" 
@@ -95,92 +90,145 @@ def sobre_nos():
         "e fazer perguntas para chegar a um diagnóstico mais exato possível. Além disso, o aplicativo com uma certa frequência envia\n"
         "notificações aos usuários, buscando fornecer a eles dicas e lembretes úteis sobre a manutenção preventiva, e com isso, ajudar\n"
         "a prolongar a vida útil dos veículos e evitar acidentes ou problemas futuros.")
-    
-        while opcao >= 1 and opcao <= 3: 
-            print("Bem vindo ao conteúdo de nossa empresa!\n"
-            "[1] Integrantes\n"
-            "[2] Sobre nós\n"
-            "[3] Parceirias\n")
-            opcao = int(input('\nDigite a opção desejada: '))
-            if opcao == 1:
-                print(f'Integrantes: {integrantes}')
-            elif opcao == 2:
-                print(f'Sobre nós: {resumo}')
-            elif opcao == 3:
-                print(f"Parceiros: {parceiros}")
-            else:
+def sobre_nos():
+    while True:
+        try:
+            print("Sobre nós!\n"
+                "[1] Integrantes\n"
+                "[2] Parceiros\n"
+                "[3] Resumo")
+            opcao3 = int(input('\nDigite a opção desejada: '))
+            if(opcao3 < 1 and opcao3 > 3):
                 print('Opção inválida')
-    except ValueError:
-        print('Erro: Por favor, insira um valor numérico válido')
-    finally:
-        print('Finalizando a consulta sobre a empresa')
+            else: 
+                return opcao3
+        except ValueError:
+            print('Valor inválido. Digite uma opção válida') 
+        finally:
+            print('Fechando\n ')
+    
+def controlador_sobre(opcao):
+    if opcao == 1:
+        integrante()
+    elif opcao == 2:
+        parceiros()
+    elif opcao == 3:
+        resumo()
    
-usuarios = {}
 
-def cadastro(usuarios):
-    try:
-        nome = input("Digite seu nome: ")
-        email = input("Digite seu e-mail: ")
-        telefone = input("Digite seu telefone: ")
-        senha = input("Digite sua senha: ")
-
-        if email in usuarios:
-            print("O email ja foi cadastrado. Tente outro.")
-            return cadastro(usuarios)
-
-        usuarios[email] = {"nome": nome, "telefone": telefone, "senha": senha}
-    except Exception as e:
-        print(f"Erro: {e}")
-    finally:
-        print("Cadastro realizado com sucesso!")
     
-def login(usuarios):
-    try:
-        email_login = input("Digite seu e-mail: ")
-        senha_login = input("Digite sua senha: ")
-        if email_login in usuarios and usuarios[email_login]["senha"] == senha_login:
-            print("\nBem-vindo")
-        else:
-            print("Usuário ou senha incorretos. ")
-    except Exception as e:
-        print(f"Erro: {e}")
-    finally:
-        print("Login bem-sucedido!")
-        
-        
-#CRUD
-def listar_usuarios(usuarios):
-    for email, dados in usuarios.items():
-        print(f"Email: {email}")
-        for chave, valor in dados.items():
-            print(f"{chave}: {valor}")
+def menu_usuario():
+    while True:
+        try:
+            print("Bem vindo ao menu do usuário!\n"
+                "[1] Cadastrar\n"
+                "[2] Verificar dados\n"
+                "[3] Alterar dados de cadastro\n"
+                "[4] Excluir dados de cadastro\n"
+                "[5] Voltar ao menu principal")
+            opcao2 = int(input('\nDigite a opção desejada: '))
+            if(opcao2 < 1 and opcao2 > 5):
+                print('Opção inválida')
+            else: 
+                return opcao2
+        except ValueError:
+            print('Valor inválido. Digite uma opção válida') 
+        finally:
+            print('Fechando menu\n ')  
             
-def buscar_usuario(usuarios, email):
-    if email in usuarios:
-        return usuarios[email]
+def controlador_usu(opcao2):
+    if opcao2 == 1:
+        dados = dados_usu()
+        adicionar_dados_dicionario(dados)
+    elif opcao2 == 2:
+        email = usu_email()
+        verifica_dados(email)
+    elif opcao2 == 3:
+        email = usu_email()
+        altera_dados(email)
+    elif opcao2 == 4:
+        email = usu_email()
+        excluir_dados(email)
+    elif opcao2 == 5:
+        menu()
+
+
+def usu_nome():
+    while True:
+        nome = input('Digite seu nome: ')
+        if nome == '':
+            print('Valor inválido')
+        else:
+            return nome
+def usu_email():
+    while True:
+        email = input('Digite seu e-mail: ')
+        if email == '':
+            print('Valor inválido')
+        else:
+            return email
+            
+def usu_tel():
+    while True:
+        tel = input('Digite seu telefone: ')
+        if tel == '':
+            print('Valor inválido')
+        else:
+            return tel
+
+
+def dados_usu():   
+    email = usu_email()
+    dados = {
+        email: {
+            "email": email,
+            "nome": usu_nome(),
+            "telefone": usu_tel()
+        }
+    }
+    return dados
+
+def adicionar_dados_dicionario(dados):
+    clientes.update(dados)
+
+def verifica_dados(email):
+    if email in clientes:
+        for chave, valor in clientes[email].items():
+            print(f'{chave}: {valor}\n')
     else:
-        print("Usuário não encontrado.")
-        return None
-    
-novos_dados={}
-    
-def atualizar_usuario(usuarios, email, novos_dados):
-    novos_dados = input("Digite seu e-mail: "), input("Digite seu telefone")
-    if email in usuarios:
-        usuarios[email].update(novos_dados)
-        print("Usuário atualizado com sucesso.")
+        print('Email não encontrado')
+        
+def altera_dados(email):
+    if email in clientes:
+        print('Alterar dados')
+        verifica_dados(email)
+        while True:
+            chave = input('Digite qual dado deseja alterar: ')
+            if chave == 'email' or chave == 'nome' or chave == 'telefone':
+                while True:
+                    valor = input('Digite o novo valor: ')
+                    if  valor != '':
+                        clientes[email][chave] = valor
+                        print('dados alterados')
+                        break
+                    else:
+                        print('Valor inválido')
+                break
+            else:
+                print('Valor inválido')
+        
+
+def excluir_dados(email):
+    if email in clientes:
+        del clientes[email]
+        print('Dados excluídos')
     else:
-        print("Usuário não encontrado.")
+        print('Email não cadastrado')
 
-def deletar_usuario(usuarios, email):
-      if email in usuarios:
-          del usuarios[email]
-          print("Usuário deletado com sucesso.")
-      else:
-          print("Usuário não encontrado.")
+            
 
 
-      
+
 def controlador(opcao):
     if opcao == 1:
         diagnostico_veiculo()
@@ -191,19 +239,12 @@ def controlador(opcao):
     elif opcao == 4:
         despesas()
     elif opcao == 5:
-        sobre_nos()
+        opcao = sobre_nos()
+        controlador_sobre(opcao)
     elif opcao == 6:
-        cadastro(usuarios)
-    elif opcao == 7:
-        login(usuarios)
-    elif opcao == 8:
-        listar_usuarios(usuarios)
-    elif opcao == 9:
-        buscar_usuario(usuarios)
-    elif opcao == 10:
-        atualizar_usuario(usuarios)
-    elif opcao == 11:
-        deletar_usuario(usuarios)
+        opcao = menu_usuario()
+        controlador_usu(opcao)
+
     else:
         print("Opção inválida")
         
